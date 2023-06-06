@@ -1,0 +1,40 @@
+Importando as bibliotecas necessárias:
+
+requests: permite fazer solicitações HTTP para obter o conteúdo da página da web.
+BeautifulSoup: auxilia na análise do HTML e na extração de informações específicas.
+pandas: uma biblioteca popular para manipulação e análise de dados.
+openpyxl: usado para trabalhar com arquivos do Excel.
+dataframe_to_rows: uma função do openpyxl que ajuda a converter um DataFrame do pandas em linhas que podem ser inseridas em uma planilha do Excel.
+Desabilitando a verificação do certificado SSL:
+
+Nesse caso, foi utilizado um código específico para desativar a verificação do certificado SSL. Essa ação é necessária quando se trabalha com URLs que possuem certificados inválidos ou autossignados.
+Abrindo o arquivo do Excel:
+
+Utilizando a biblioteca openpyxl, o código carrega o arquivo do Excel especificado no caminho fornecido.
+Selecionando a planilha desejada:
+
+A variável sheet é usada para referenciar a planilha específica dentro do arquivo do Excel.
+Fazendo uma solicitação HTTP e obtendo o conteúdo da página:
+
+Utilizando a biblioteca requests, o código envia uma solicitação HTTP para a URL fornecida. O parâmetro verify=False é usado para desabilitar a verificação do certificado SSL.
+Criando um objeto BeautifulSoup:
+
+O conteúdo da página obtida é passado para o construtor do BeautifulSoup, juntamente com o parser "html.parser". Isso cria um objeto BeautifulSoup que pode ser usado para analisar o HTML da página.
+Encontrando tabelas na página:
+
+Utilizando o método find_all do objeto BeautifulSoup, o código procura todas as ocorrências de elementos <table> na página e armazena-os em uma lista.
+Processando cada tabela:
+
+O código percorre cada tabela encontrada na página.
+Lendo a tabela e armazenando em um DataFrame:
+
+Utilizando a biblioteca pandas, o código lê o conteúdo da tabela encontrada e o armazena em um DataFrame. A função pd.read_html é usada com o argumento str(table) para ler a tabela em formato de string.
+Copiando os dados do DataFrame para o Excel:
+
+Utilizando a função dataframe_to_rows do openpyxl, o código converte cada linha do DataFrame em uma lista de valores e a insere na planilha do Excel usando o método sheet.append(row).
+Salvando as alterações no arquivo do Excel:
+
+O código salva as alterações feitas na planilha, usando o método workbook.save.
+Fechando o arquivo do Excel:
+
+Por fim, o código fecha o arquivo do Excel usando o método workbook.close().
